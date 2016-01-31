@@ -26,12 +26,15 @@ public class DButils {
             while (myRes.next()) {
                 importPojo pojo1 = new importPojo();
                 for (int indexCol = 1; indexCol <= rsmd.getColumnCount(); indexCol++) {
+
                     Class pojo = pojo1.getClass();
                     String columnLabel = rsmd.getColumnLabel(indexCol);
-                    Method method = pojo.getMethod(columnLabel, int.class);
+                    Method method = pojo.getMethod("set"+columnLabel, Integer.class);
                     method.invoke(pojo1,myRes.getInt(columnLabel));
+
+
+                    set.add(pojo1);
                 }
-                set.add(pojo1);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,7 +55,7 @@ public class DButils {
         return null;
     }
     // Параметризуем параметры
-    private static void setParameters(PreparedStatement preparedStatement, Object... params) throws SQLException {
+     static void setParameters(PreparedStatement preparedStatement, Object... params) throws SQLException {
         if(params != null){
             int pos = 0;
             for(Object o : params){
