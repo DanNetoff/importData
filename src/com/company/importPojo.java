@@ -12,16 +12,24 @@ public class importPojo {
 
     public importPojo() {
     }
+
     public importPojo(Integer numberFilial, Integer codeFilial) {
         this.numberFilial = numberFilial;
         this.codeFilial = codeFilial;
     }
 
-    public void setCodeFilial(Integer codeFilial) {
+    @Override
+    public String toString() {
+        return "\n" +
+                "numberFilial=" + numberFilial +
+                ", codeFilial=" + codeFilial ;
+    }
+
+    public void setcode_filial(Integer codeFilial) {
         this.codeFilial = codeFilial;
     }
 
-    public void setNumberFilial(Integer numberFilial) {
+    public void setnumber_filial(Integer numberFilial) {
         this.numberFilial = numberFilial;
     }
 
